@@ -1,28 +1,67 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main >
+      <v-row>
+        <v-col>
+          <h1 class="text-center">Валютный калькулятор</h1>
+          <h3 class="text-center"> Динамичный калькулятор валюты</h3>
+        </v-col>
+      </v-row>
+
+
+    </v-main>
+
+
+
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+$color_1: #D9D9D9;
+$color_2: #A6A6A6;
+$color_3: #737373;
+$color_4: #595959;
+$color_5: #262626;
+
+#app {
+  background-color: $color_1;
+  padding: 1rem;
+  border-radius: 8px;
+
+  & .v-main {
+    background-color: $color_2;
+    border-radius: 8px;
+    padding: 1rem !important;
   }
 }
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+h1 {
+  font-weight: 900;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 0;
+  font-weight: 300;
 }
 </style>
