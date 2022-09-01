@@ -1,5 +1,5 @@
 # calc
-
+Калькулятор валюты берет курс валют по апи от https://currate.ru/ и считает динамически.
 ## Project setup
 ```
 npm install
