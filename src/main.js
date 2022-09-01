@@ -6,10 +6,14 @@ import App from './App.vue'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
-Vue.config.productionTip = false
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.prototype.$axios = axios
 
+Vue.config.productionTip = false
+Vue.use( axios)
 new Vue({
-  store,
+  store,axios,VueAxios,
   vuetify,
   render: h => h(App)
 }).$mount('#app')

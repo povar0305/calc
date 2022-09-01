@@ -7,8 +7,7 @@
           <h3 class="text-center"> Динамичный калькулятор валюты</h3>
         </v-col>
       </v-row>
-
-
+      <main-calc></main-calc>
     </v-main>
 
 
@@ -18,10 +17,10 @@
 
 <script>
 
+import MainCalc from "@/components/MainCalc";
 export default {
   name: 'App',
-
-
+  components: {MainCalc},
   data: () => ({
     //
   }),
@@ -33,20 +32,20 @@ export default {
 * {
   font-family: 'Montserrat', sans-serif;
 }
+$color_1: #0511F2;
+$color_2: #4951F2;
+$color_3: #999DF2;
+$color_4: #B6B9F2;
+$color_5: #ffffff;
 
-$color_1: #D9D9D9;
-$color_2: #A6A6A6;
-$color_3: #737373;
-$color_4: #595959;
-$color_5: #262626;
-
+$light_white: rgba(255, 255, 255, 0.7);
 #app {
-  background-color: $color_1;
+  background-color: $color_5;
   padding: 1rem;
   border-radius: 8px;
 
   & .v-main {
-    background-color: $color_2;
+    background-color: $color_4;
     border-radius: 8px;
     padding: 1rem !important;
   }
@@ -63,5 +62,19 @@ h3 {
 p {
   margin-bottom: 0;
   font-weight: 300;
+}
+.theme--light.v-text-field--solo > .v-input__control > .v-input__slot,.theme--light.v-sheet {
+  background: $light_white;
+  backdrop-filter: blur(8px);
+}
+.v-input__slot:before{
+border-color: $light_white !important;
+}
+.v-text-field > .v-input__control > .v-input__slot:after{
+  border-color: white!important;
+}
+
+.v-application .primary--text , div.v-input.input_white   label{
+  color: $light_white !important;
 }
 </style>
