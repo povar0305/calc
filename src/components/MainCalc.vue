@@ -90,13 +90,9 @@ export default {
     calcResult() {
 
       this.Result=this.FirstSum*this.NameCurrencyResult[this.FirstCurrency].Nominal
-      console.log(this.Result)
       this.Result=this.Result*this.NameCurrencyResult[this.FirstCurrency].Value
-      console.log(this.Result)
       this.Result=this.Result/this.NameCurrencyResult[this.SecondCurrency].Value
-      console.log(this.Result)
       this.Result= this.Result/this.NameCurrencyResult[this.SecondCurrency].Nominal
-      console.log(this.Result)
 
     }
 
