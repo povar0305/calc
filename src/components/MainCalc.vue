@@ -37,11 +37,11 @@
         ></v-select>
       </v-col>
     </v-row>
-
     <ModalResult v-bind:Result="this.Result"
                  v-bind:ShowPopup="this.ShowPopup"
                  v-bind:SecondCurrency="this.SecondCurrency"
-    @closePopup="closePopup"></ModalResult>
+                 @closePopup="closePopup">
+    </ModalResult>
   </v-row>
 
 </template>
@@ -60,29 +60,43 @@ export default {
     SecondCurrency: '',
     Currency: {},
     CurrencyStr: null,
-    Result:null,
-    newArrayCurrency: [],
-    ShowPopup: false
+    Result: null,
+    NameCurrencyResult: {},
+    ShowPopup: false,
+    new: null
   }),
   methods: {
     onInputFirstCurrency(currency) {
       this.FirstCurrency = currency
+
       this.checkAll()
     },
     onInputSecondCurrency(currency) {
       this.SecondCurrency = currency
       this.checkAll()
     },
-    checkAll(){
-      if(this.FirstCurrency && this.SecondCurrency && this.FirstSum){
-        this.ShowPopup=true
+    checkAll() {
+      if (this.FirstCurrency && this.SecondCurrency && this.FirstSum) {
+        this.ShowPopup = true
+        this.calcResult()
 
-      }else{
+      } else {
         this.closePopup()
       }
     },
-    closePopup(){
-      this.ShowPopup=false
+    closePopup() {
+      this.ShowPopup = false
+    },
+    calcResult() {
+
+      this.Result=this.FirstSum*this.NameCurrencyResult[this.FirstCurrency].Nominal
+      console.log(this.Result)
+      this.Result=this.Result*this.NameCurrencyResult[this.FirstCurrency].Value
+      console.log(this.Result)
+      this.Result=this.Result/this.NameCurrencyResult[this.SecondCurrency].Value
+      console.log(this.Result)
+      this.Result= this.Result/this.NameCurrencyResult[this.SecondCurrency].Nominal
+      console.log(this.Result)
 
     }
 
@@ -90,6 +104,8 @@ export default {
   mounted() {
     axios.get('https://www.cbr-xml-daily.ru/latest.js')
         .then(response => this.Currency = Object.keys(response.data.rates));
+    axios.get('https://www.cbr-xml-daily.ru/daily_json.js')
+        .then(response => this.NameCurrencyResult = response.data.Valute);
   }
 }
 </script>
